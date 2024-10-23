@@ -38,6 +38,9 @@ export default class MyUI {
             case (["+", "-", "*", "/"]).includes(button.id):
                 MyUI.#setEventToOperatorButton(button)
                 break
+            case button.id === "=":
+                MyUI.#setEventToEqualButton(button)
+                break
             default:
                 MyUI.#setEventToNumericButton(button)
                 break
