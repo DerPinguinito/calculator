@@ -1,5 +1,7 @@
 export default class Calculator {
     static output = ''
+    static operator = ''
+
     static add(a, b) {
         return a + b
     }
