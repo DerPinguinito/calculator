@@ -17,6 +17,10 @@ export default class MyUI {
             calc.output = '0'
         }    
     }
+    static #setEventToEqualButton(button) {
+        calc.operate()
+        MyUI.#updateScreen()
+    }
     static #setEventToOperatorButton(button) {
         button.addEventListener('click', (e) => {
             calc.operator = e.target.id
@@ -32,6 +36,7 @@ export default class MyUI {
     static #sortButtonEvents(button) {
         switch(true) {
             case (["+", "-", "*", "/"]).includes(button.id):
+                MyUI.#setEventToOperatorButton(button)
                 break
             default:
                 MyUI.#setEventToNumericButton(button)
