@@ -4,7 +4,6 @@ export default class MyUI {
     static #updateScreen() {
         const OUTPUT = document.getElementById("output")
         if (OUTPUT) {
-            console.log("Output element found")
             OUTPUT.textContent ? null : calc.output = '0'
             OUTPUT.textContent = calc.output
         }
@@ -18,16 +17,33 @@ export default class MyUI {
         }    
     }
     static #setEventToEqualButton(button) {
-        calc.operate()
-        MyUI.#updateScreen()
+        button.addEventListener('click', () => {
+            calc.secondValue = calc.output
+            calc.operate(calc.operator, parseFloat(calc.firstValue), parseFloat(calc.secondValue))
+            calc.firstValue = calc.output
+            calc.secondValue = '0'
+            MyUI.#updateScreen()
+        })
     }
     static #setEventToOperatorButton(button) {
         button.addEventListener('click', (e) => {
             calc.operator = e.target.id
+            calc.eraseScreen = true
         })
+    }
+    static #storeValue() {
+        if (calc.operator && calc.eraseScreen) {
+            if (calc.firstValue) {
+                calc.secondValue = calc.output
+            }
+            calc.firstValue = calc.output
+            calc.output = '0'
+        }
     }
     static #setEventToNumericButton(button) {
         button.addEventListener('click', (e) => {
+            MyUI.#storeValue()
+            calc.eraseScreen = false
             calc.output += e.target.textContent
             MyUI.#updateValue()
             MyUI.#updateScreen()

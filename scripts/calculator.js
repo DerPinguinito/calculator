@@ -1,33 +1,40 @@
 export default class Calculator {
+    static firstValue = ''
+    static secondValue = ''
     static output = ''
     static operator = ''
+    static eraseScreen = false
 
     static add(a, b) {
-        Calculator.output = a + b
+        this.output = a + b
     }
     static subtract(a, b) {
-        Calculator.output = a - b
+        this.output = a - b
     }
     static multiply(a, b) {
-        Calculator.output = a * b
+        this.output = a * b
     }
     static divide(a, b) {
-        Calculator.output = a / b
+        if (b === 0) {
+            alert("ERROR")
+            return
+        }
+        this.output = a / b
     }
 
     static operate(operator, a, b) {
         switch(operator) {
             case "+":
-                Calculator.add(a, b)
+                this.add(a, b)
                 break
             case "-":
-                Calculator.subtract(a, b)
+                this.subtract(a, b)
                 break
             case "*":
-                Calculator.multiply(a, b)
+                this.multiply(a, b)
                 break
             case "/":
-                Calculator.divide(a, b)
+                this.divide(a, b)
                 break
             default:
                 null
