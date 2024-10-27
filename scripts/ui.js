@@ -89,10 +89,29 @@ export default class MyUI {
                 break
         }
     }
+    static #keyboardEventListener() {
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                const ENTER = document.getElementById("=")
+                ENTER.click()
+                return
+            }
+            if (e.key === "Backspace") {
+                const BACKSPACE = document.getElementById("clear")
+                BACKSPACE.click()
+            }
+            const BUTTON = document.getElementById(e.key)
+            if (!BUTTON) {
+                return
+            }
+            BUTTON.click()
+        })     
+    }
     static #main() {
         MyUI.#updateScreen()
         const BUTTONS = document.body.querySelectorAll("button")
-        BUTTONS.forEach(button => MyUI.#sortButtonEvents(button))      
+        BUTTONS.forEach(button => MyUI.#sortButtonEvents(button))
+        MyUI.#keyboardEventListener()      
     }
 
     #initiate = MyUI.#main()
