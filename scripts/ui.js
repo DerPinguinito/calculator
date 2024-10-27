@@ -37,6 +37,12 @@ export default class MyUI {
             MyUI.#updateScreen()
         })
     }
+    static #setEventToClearButton(button) {
+        button.addEventListener('click', () => {
+            calc.clear()
+            MyUI.#updateScreen()
+        })
+    }
     static #storeValue() {
         if (calc.operator && calc.eraseScreen) {
             if (calc.firstValue) {
@@ -65,6 +71,9 @@ export default class MyUI {
                 break
             case button.id === "del":
                 MyUI.#setEventToDelButton(button)
+                break
+            case button.id === "clear":
+                MyUI.#setEventToClearButton(button)
                 break
             default:
                 MyUI.#setEventToNumericButton(button)

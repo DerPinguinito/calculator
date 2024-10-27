@@ -21,7 +21,7 @@ export default class Calculator {
         }
         this.output = a / b
     }
-
+    
     static operate(operator, a, b) {
         switch(operator) {
             case "+":
@@ -40,7 +40,9 @@ export default class Calculator {
                 null
         }
     }
-
+    static clear() {
+        this.output = '0'
+    }
     static reset() {
         this.firstValue = ''
         this.secondValue = ''
