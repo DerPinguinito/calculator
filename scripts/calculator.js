@@ -40,4 +40,12 @@ export default class Calculator {
                 null
         }
     }
+
+    static reset() {
+        this.firstValue = ''
+        this.secondValue = ''
+        this.output = '0'
+        this.operator = ''
+        this.eraseScreen = false
+    }
 }
