@@ -5,16 +5,16 @@ export default class Calculator {
     static operator = ''
     static eraseScreen = false
 
-    static add(a, b) {
+    static #add(a, b) {
         this.output = a + b
     }
-    static subtract(a, b) {
+    static #subtract(a, b) {
         this.output = a - b
     }
-    static multiply(a, b) {
+    static #multiply(a, b) {
         this.output = a * b
     }
-    static divide(a, b) {
+    static #divide(a, b) {
         if (b === 0) {
             alert("ERROR")
             return
@@ -22,37 +22,37 @@ export default class Calculator {
         this.output = a / b
     }
 
-    static valueToNeg(value) {
+    static #valueToNeg(value) {
         let x = value.split('')
         x.unshift('-')
         this.output = x.join('')
     }
-    static valueToPos(value) {
+    static #valueToPos(value) {
         let x = value.split('')
         x.shift('')
         this.output = x.join('')
     }
     static changeValueToPosOrNeg(value) {
         if (value[0] === "-") {
-            this.valueToPos(value)
+            Calculator.#valueToPos(value)
             return
         }
-        this.valueToNeg(value)
+        Calculator.#valueToNeg(value)
     }
 
     static operate(operator, a, b) {
         switch(operator) {
             case "+":
-                this.add(a, b)
+                Calculator.#add(a, b)
                 break
             case "-":
-                this.subtract(a, b)
+                Calculator.#subtract(a, b)
                 break
             case "*":
-                this.multiply(a, b)
+                Calculator.#multiply(a, b)
                 break
             case "/":
-                this.divide(a, b)
+                Calculator.#divide(a, b)
                 break
             default:
                 null
