@@ -58,6 +58,7 @@ export default class Calculator {
                 null
         }
     }
+    
     static clear() {
         this.output = '0'
     }

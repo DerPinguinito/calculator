@@ -2,7 +2,7 @@ import calc from "./calculator.js"
 
 export default class MyUI {
     static #updateScreen() {
-        const OUTPUT = document.getElementById("output")
+        const OUTPUT = document.getElementById('output')
         if (OUTPUT) {
             OUTPUT.textContent ? null : calc.output = '0'
             OUTPUT.textContent = calc.output
@@ -69,19 +69,19 @@ export default class MyUI {
     }
     static #sortButtonEvents(button) {
         switch(true) {
-            case (["+", "-", "*", "/"]).includes(button.id):
+            case (['+', '-', '*', '/']).includes(button.id):
                 MyUI.#setEventToOperatorButton(button)
                 break
-            case button.id === "=":
+            case button.id === ''='':
                 MyUI.#setEventToEqualButton(button)
                 break
-            case button.id === "del":
+            case button.id === 'del':
                 MyUI.#setEventToDelButton(button)
                 break
-            case button.id === "clear":
+            case button.id === 'clear':
                 MyUI.#setEventToClearButton(button)
                 break
-            case button.id === "pos-neg":
+            case button.id === 'pos-neg':
                 MyUI.#setEventToPosNegButton(button)
                 break
             default:
@@ -91,13 +91,13 @@ export default class MyUI {
     }
     static #keyboardEventListener() {
         window.addEventListener('keydown', (e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
                 const ENTER = document.getElementById("=")
                 ENTER.click()
                 return
             }
-            if (e.key === "Backspace") {
-                const BACKSPACE = document.getElementById("clear")
+            if (e.key === 'Backspace') {
+                const BACKSPACE = document.getElementById('clear')
                 BACKSPACE.click()
             }
             const BUTTON = document.getElementById(e.key)
@@ -109,7 +109,7 @@ export default class MyUI {
     }
     static #main() {
         MyUI.#updateScreen()
-        const BUTTONS = document.body.querySelectorAll("button")
+        const BUTTONS = document.body.querySelectorAll('button')
         BUTTONS.forEach(button => MyUI.#sortButtonEvents(button))
         MyUI.#keyboardEventListener()      
     }
