@@ -49,6 +49,15 @@ export default class MyUI {
             MyUI.#updateScreen()
         })
     }
+    static #setEventToPointButton(button) {
+        button.addEventListener('click', () => {
+            if (calc.output.includes('.')) {
+                return
+            }
+            calc.output += button.textContent
+            MyUI.#updateScreen()
+        })
+    }
     static #storeValue() {
         if (calc.operator && calc.eraseScreen) {
             if (calc.firstValue) {
@@ -75,6 +84,9 @@ export default class MyUI {
             case button.id === '=':
                 MyUI.#setEventToEqualButton(button)
                 break
+            case button.id === '.':
+                MyUI.#setEventToPointButton(button)
+                break;
             case button.id === 'del':
                 MyUI.#setEventToDelButton(button)
                 break
