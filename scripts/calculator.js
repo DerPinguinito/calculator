@@ -16,7 +16,7 @@ export default class Calculator {
     }
     static #divide(a, b) {
         if (b === 0) {
-            alert("ERROR")
+            window.open('./error.html')
             return
         }
         this.output = a / b
