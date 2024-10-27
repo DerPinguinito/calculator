@@ -72,7 +72,7 @@ export default class MyUI {
             case (['+', '-', '*', '/']).includes(button.id):
                 MyUI.#setEventToOperatorButton(button)
                 break
-            case button.id === ''='':
+            case button.id === '=':
                 MyUI.#setEventToEqualButton(button)
                 break
             case button.id === 'del':
