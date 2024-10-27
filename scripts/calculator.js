@@ -21,7 +21,25 @@ export default class Calculator {
         }
         this.output = a / b
     }
-    
+
+    static valueToNeg(value) {
+        let x = value.split('')
+        x.unshift('-')
+        this.output = x.join('')
+    }
+    static valueToPos(value) {
+        let x = value.split('')
+        x.shift('')
+        this.output = x.join('')
+    }
+    static changeValueToPosOrNeg(value) {
+        if (value[0] === "-") {
+            this.valueToPos(value)
+            return
+        }
+        this.valueToNeg(value)
+    }
+
     static operate(operator, a, b) {
         switch(operator) {
             case "+":

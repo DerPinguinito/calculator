@@ -43,6 +43,12 @@ export default class MyUI {
             MyUI.#updateScreen()
         })
     }
+    static #setEventToPosNegButton(button) {
+        button.addEventListener('click', () => {
+            calc.changeValueToPosOrNeg(calc.output)
+            MyUI.#updateScreen()
+        })
+    }
     static #storeValue() {
         if (calc.operator && calc.eraseScreen) {
             if (calc.firstValue) {
@@ -74,6 +80,9 @@ export default class MyUI {
                 break
             case button.id === "clear":
                 MyUI.#setEventToClearButton(button)
+                break
+            case button.id === "pos-neg":
+                MyUI.#setEventToPosNegButton(button)
                 break
             default:
                 MyUI.#setEventToNumericButton(button)
